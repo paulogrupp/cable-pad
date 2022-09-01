@@ -1,0 +1,11 @@
+#notepad_text {
+    font-family: Arial, Helvetica, Tahoma, Verdana;
+	margin: auto;
+	font-size: 16px;
+	width: 100%;
+	height: 100%;
+	color: #111111;
+	padding: 10px;
+	resize: none;
+	overflow:auto;
+}

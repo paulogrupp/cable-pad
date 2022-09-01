@@ -1,0 +1,179 @@
+  [1m[35m (3665.7ms)[0m  [1m[35mCREATE DATABASE "cable-pad_development" ENCODING = 'unicode'[0m
+  [1m[35m (3746.3ms)[0m  [1m[35mCREATE DATABASE "cable-pad_test" ENCODING = 'unicode'[0m
+  [1m[35m (199.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (47.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2829065246501381055)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (7.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateNotepads (20220819201335)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(2829065246501381055)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2829065246501381055)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateNotepads (20220819201335)
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (132.1ms)[0m  [1m[35mCREATE TABLE "notepads" ("id" bigserial primary key, "text" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (8.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220819201335"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddNameToNotepad (20220819204224)
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "notepads" ADD "name" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (5.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220819204224"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (11.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-01 16:07:27.196106"], ["updated_at", "2022-09-01 16:07:27.196106"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2829065246501381055)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (6.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.23.0.1 at 2022-09-01 16:10:09 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 39.9ms | Allocations: 677)
+Completed 200 OK in 453ms (Views: 219.7ms | ActiveRecord: 0.0ms | Allocations: 6512)
+
+
+Started GET "/notepads" for 172.23.0.1 at 2022-09-01 16:10:17 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/index.html.erb within layouts/application
+  [1m[36mNotepad Load (5.7ms)[0m  [1m[34mSELECT "notepads".* FROM "notepads"[0m
+  ↳ app/views/notepads/index.html.erb:6
+  Rendered notepads/index.html.erb within layouts/application (Duration: 35.4ms | Allocations: 1034)
+  Rendered layout layouts/application.html.erb (Duration: 5500.7ms | Allocations: 94672)
+Completed 200 OK in 5578ms (Views: 5503.7ms | ActiveRecord: 5.7ms | Allocations: 96079)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:10:25 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 52.7ms | Allocations: 835)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 116.6ms | Allocations: 1149)
+  Rendered layout layouts/application.html.erb (Duration: 175.2ms | Allocations: 3337)
+Completed 200 OK in 241ms (Views: 182.7ms | ActiveRecord: 32.1ms | Allocations: 7957)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:10:45 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 11.0ms | Allocations: 598)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 35.9ms | Allocations: 844)
+  Rendered layout layouts/application.html.erb (Duration: 86.2ms | Allocations: 3241)
+Completed 200 OK in 105ms (Views: 102.2ms | ActiveRecord: 0.0ms | Allocations: 4160)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:12:17 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 15.6ms | Allocations: 592)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 26.9ms | Allocations: 837)
+  Rendered layout layouts/application.html.erb (Duration: 118.7ms | Allocations: 3238)
+Completed 200 OK in 137ms (Views: 130.6ms | ActiveRecord: 0.0ms | Allocations: 4158)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:13:22 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 23.5ms | Allocations: 633)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 34.5ms | Allocations: 881)
+  Rendered layout layouts/application.html.erb (Duration: 77.9ms | Allocations: 3279)
+Completed 200 OK in 96ms (Views: 93.1ms | ActiveRecord: 0.0ms | Allocations: 4191)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:13:33 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 2.6ms | Allocations: 465)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 536)
+  Rendered layout layouts/application.html.erb (Duration: 34.3ms | Allocations: 2713)
+Completed 200 OK in 45ms (Views: 42.2ms | ActiveRecord: 0.0ms | Allocations: 2977)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:15:07 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 12.4ms | Allocations: 628)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 24.4ms | Allocations: 874)
+  Rendered layout layouts/application.html.erb (Duration: 56.9ms | Allocations: 3268)
+Completed 200 OK in 77ms (Views: 72.0ms | ActiveRecord: 0.0ms | Allocations: 4179)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:15:09 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 3.8ms | Allocations: 494)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 565)
+  Rendered layout layouts/application.html.erb (Duration: 81.3ms | Allocations: 2742)
+Completed 200 OK in 96ms (Views: 94.0ms | ActiveRecord: 0.0ms | Allocations: 3006)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:15:49 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 11.5ms | Allocations: 635)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 20.9ms | Allocations: 880)
+  Rendered layout layouts/application.html.erb (Duration: 63.5ms | Allocations: 3274)
+Completed 200 OK in 76ms (Views: 70.8ms | ActiveRecord: 0.0ms | Allocations: 4185)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:17:20 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 4.5ms | Allocations: 606)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 11.3ms | Allocations: 849)
+  Rendered layout layouts/application.html.erb (Duration: 39.6ms | Allocations: 3260)
+Completed 200 OK in 58ms (Views: 47.6ms | Allocations: 4173)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:17:34 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 13.7ms | Allocations: 621)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 24.7ms | Allocations: 861)
+  Rendered layout layouts/application.html.erb (Duration: 79.1ms | Allocations: 3261)
+Completed 200 OK in 95ms (Views: 90.7ms | Allocations: 4181)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:21:33 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 3.9ms | Allocations: 470)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 541)
+  Rendered layout layouts/application.html.erb (Duration: 379.9ms | Allocations: 6610)
+Completed 200 OK in 393ms (Views: 388.5ms | Allocations: 6874)
+
+
+Started GET "/notepads/new" for 172.23.0.1 at 2022-09-01 16:21:49 +0000
+Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by NotepadsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering notepads/new.html.erb within layouts/application
+  Rendered notepads/_form.html.erb (Duration: 6.2ms | Allocations: 464)
+  Rendered notepads/new.html.erb within layouts/application (Duration: 16.9ms | Allocations: 535)
+  Rendered layout layouts/application.html.erb (Duration: 364.2ms | Allocations: 6214)
+Completed 200 OK in 385ms (Views: 383.5ms | Allocations: 6477)
+
+
