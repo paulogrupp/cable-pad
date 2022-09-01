@@ -5,7 +5,7 @@ class NotepadsController < ApplicationController
   def update
     respond_to do |format|
       if @notepad.update(notepad_params)
-        format.json { render body: nil, status: :ok }
+        format.js { render body: nil, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @notepad.errors, status: :unprocessable_entity }
@@ -22,6 +22,6 @@ class NotepadsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def notepad_params
-    params.permit(:text)
+    params.require(:notepad).permit(:text)
   end
 end
