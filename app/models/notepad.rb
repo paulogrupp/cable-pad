@@ -1,2 +1,0 @@
-class Notepad < ApplicationRecord
-end

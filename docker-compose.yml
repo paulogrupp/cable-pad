@@ -7,7 +7,9 @@ services:
     environment:
       POSTGRES_PASSWORD: password
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-local
     command: bash -c "while [ true ]; do sleep 10; done"
     volumes:
       - .:/cable-pad
