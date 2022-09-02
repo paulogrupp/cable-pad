@@ -1,15 +1,15 @@
-# fly.toml file generated for cable-pad on 2022-08-29T11:14:03-03:00
+# fly.toml file generated for notepad7 on 2022-09-01T17:56:56-03:00
 
-app = "cable-pad"
+app = "notepad7"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
 [build]
   [build.args]
-    BUNDLER_VERSION = "1.17.3"
+    BUNDLER_VERSION = "2.1.4"
     NODE_VERSION = "14"
-    RUBY_VERSION = "2.5.9"
+    RUBY_VERSION = "2.7.6"
 
 [deploy]
   release_command = "bundle exec rails db:migrate"

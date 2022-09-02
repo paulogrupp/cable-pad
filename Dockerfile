@@ -1,6 +1,7 @@
 # syntax = docker/dockerfile:experimental
-ARG RUBY_VERSION=2.5.9
-FROM ruby:2.5 as base
+ARG RUBY_VERSION=2.7.3
+ARG VARIANT=jemalloc-slim
+FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
 
 ARG NODE_VERSION=16
 ARG BUNDLER_VERSION=2.3.9
